@@ -1,1 +1,1 @@
-## TypeScript повторение
+# 📚 TypeScript Курс
