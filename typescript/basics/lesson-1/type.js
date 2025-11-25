@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 /**
  * @description типы данных и переменные
  * В TypeScript мы можем указывать типы и ошибки нам подсветит инструмент
@@ -13,15 +13,15 @@ const meaningUndefined = undefined;
 const meaningNull = null;
 //Мы можем явно типизировать объект
 const typeObject = {
-    //    a: 'hello' - ошибка, в типе TypeObject ключ a - число
-    a: 1,
-    b: 2,
-    c: 'Hello',
-    d: function () {
-        console.log(this);
-    },
-    //e: () => console.log(this) //ts подскажет, что ссылаешься на глобальный объект
-    e: (object) => console.log(object)
+  //    a: 'hello' - ошибка, в типе TypeObject ключ a - число
+  a: 1,
+  b: 2,
+  c: 'Hello',
+  d: function () {
+    console.log(this);
+  },
+  //e: () => console.log(this) //ts подскажет, что ссылаешься на глобальный объект
+  e: (object) => console.log(object),
 };
 //variableVar
 console.log('variableVar', variableVar);
@@ -74,13 +74,13 @@ console.log('typeObject', typeObject);
 typeObject.d(); // Выведет typeObject
 typeObject.e(typeObject); // Выведет window (браузер) или {} (Node.js)
 //typeof
-console.log('typeof - variableVar', typeof (variableVar)); //variableVar string
-console.log('typeof - typeBool', typeof (typeBool)); //typeBool boolean
-console.log('typeof - typeString', typeof (typeString)); // typeString string
-console.log('typeof - typeNumber', typeof (typeNumber)); // typeNumber number
-console.log('typeof - typeNan', typeof (typeNan)); //typeNan number
-console.log('typeof - typeBitInt', typeof (typeBitInt)); //typeBitInt bigint
-console.log('typeof - meaningUndefined', typeof (meaningUndefined)); //meaningUndefined undefined
-console.log('typeof - meaningNull', typeof (meaningNull)); //meaningNull object. Баг js. Нужна явная проверка на null
+console.log('typeof - variableVar', typeof variableVar); //variableVar string
+console.log('typeof - typeBool', typeof typeBool); //typeBool boolean
+console.log('typeof - typeString', typeof typeString); // typeString string
+console.log('typeof - typeNumber', typeof typeNumber); // typeNumber number
+console.log('typeof - typeNan', typeof typeNan); //typeNan number
+console.log('typeof - typeBitInt', typeof typeBitInt); //typeBitInt bigint
+console.log('typeof - meaningUndefined', typeof meaningUndefined); //meaningUndefined undefined
+console.log('typeof - meaningNull', typeof meaningNull); //meaningNull object. Баг js. Нужна явная проверка на null
 console.log('typeof - meaningNull', meaningNull === null); //meaningNull true
-console.log('typeof - typeObject', typeof (typeObject)); //typeObject object
+console.log('typeof - typeObject', typeof typeObject); //typeObject object
