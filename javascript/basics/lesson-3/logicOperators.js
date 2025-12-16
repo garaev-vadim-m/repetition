@@ -10,15 +10,15 @@
  * * ??= (Оператор нулевого присваивания)
  */
 
-let result = null;
+let result;
 const a = 2;
 const b = undefined;
 
 // || (ИЛИ)
-console.log('result = a || b: ', (result = a || b)); // будет 1
-console.log('result будет 1 взятое с a: ', (result = 2 || a)); // будет 2 взятое с a
-console.log('result = 2 || a: ', (result = 2 || a)); // будет 2
-console.log('result = 2 || 5: ', (result = 2 || 5)); // будет 2
+console.log('result = a || b: ', a || b); // будет 1
+console.log('result будет 1 взятое с a: ', 2 || a); // будет 2 взятое с a
+console.log('result = 2 || a: ', 2 || a); // будет 2
+console.log('result = 2 || 5: ', 2 || 5); // будет 2
 
 let hour = 9;
 if (hour < 10 || hour === 9) {
