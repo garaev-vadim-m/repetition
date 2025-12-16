@@ -10,15 +10,18 @@
  * * ??= (Оператор нулевого присваивания)
  */
 
-let result = null;
-const a = 2;
+let result;
+const a = 3;
 const b = undefined;
 
 // || (ИЛИ)
-console.log('result = a || b: ', (result = a || b)); // будет 1
-console.log('result будет 1 взятое с a: ', (result = 2 || a)); // будет 2 взятое с a
-console.log('result = 2 || a: ', (result = 2 || a)); // будет 2
-console.log('result = 2 || 5: ', (result = 2 || 5)); // будет 2
+console.log('result = a || b: ', a || b); // будет 1
+// @ts-ignore
+// TypeScript нам сразу подскажет, что это выражение true и не нужно сравнение
+console.log('result будет 1 взятое с a: ', 2 || a); // будет 2 взятое с a
+// @ts-ignore
+// TypeScript нам сразу подскажет, что это выражение true и не нужно сравнение
+console.log('result = 2 || 5: ', 2 || 5); // будет 2
 
 let hour = 9;
 if (hour < 10 || hour === 9) {
