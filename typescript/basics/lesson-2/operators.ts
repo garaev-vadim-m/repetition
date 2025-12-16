@@ -1,4 +1,4 @@
-"use strict"
+'use strict';
 /**
  * @description Базовые операторы, математика
  */
@@ -14,12 +14,13 @@
  */
 
 //Унарный оператор
-let unaryX: number = 1
-unaryX = -unaryX
+let unaryX: number = 1;
+unaryX = -unaryX;
 
 console.log('unary', unaryX);
 //Бинарный оператор
-let binaryX = 2, binaryY = 3
+let binaryX = 2,
+  binaryY = 3;
 console.log('binary', binaryX - binaryY);
 
 //Взятие остатка
@@ -32,7 +33,7 @@ console.log(2 ** 2); // 2² = 4
 console.log(2 ** 3); // 2³ = 8
 console.log(2 ** 4); // 2⁴ = 16
 
-//Операторы при строках. Когда используешь TS нужно явно указывать что это число. Математические операции со строками не корректны.
+//Операторы при строках. Когда используешь TS нужно явно указывать что это число. Математические операции со строками не корректны ‼️.
 console.log('Вычитание', 6 - Number('2')); // 4, '2' приводится к числу
 console.log('Деление', Number('6') / Number('2')); // 3, оба операнда приводятся к числам
 console.log('Умножение', Number('6') * Number('2')); // 6, оба операнда приводятся к числам
@@ -45,8 +46,8 @@ console.log('Приведение к числу,' + '1'); //1
 console.log('Приведение к числу', +'55' + 2); //57
 
 //Сокращение
-let x: number = 2
-x *= 2
+let x: number = 2;
+x *= 2;
 console.log('Сокращение x *= 2', x); //4
 
 let n: number = 2;
@@ -55,9 +56,9 @@ n *= 3 + 5;
 console.log('Сокращение n *= 3 + 5;', n); //16, вначале сложение, потом умножение
 
 let increment = 3;
-increment++
-console.log('Инкремент', increment);//4
+increment++;
+console.log('Инкремент', increment); //4
 
 let decrement = 3;
-decrement--
-console.log('Декремент', decrement);//2
+decrement--;
+console.log('Декремент', decrement); //2

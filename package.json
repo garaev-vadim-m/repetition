@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "format": "prettier --write",
+    "prettier-watch": "npx onchange \"**/*\" -- prettier --write --ignore-unknown {{changed}}"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2"
+  }
+}
