@@ -16,7 +16,8 @@ let unaryX = 1;
 unaryX = -unaryX;
 console.log('unary', unaryX);
 //Бинарный оператор
-let binaryX = 2, binaryY = 3;
+let binaryX = 2,
+  binaryY = 3;
 console.log('binary', binaryX - binaryY);
 //Взятие остатка
 console.log('Взятие остатка', 5 % 2); // 1, остаток от деления 5 на 2

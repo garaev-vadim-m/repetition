@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 /**
  * @description типы данных и переменные
  * В TypeScript мы можем указывать типы и ошибки нам подсветит инструмент
@@ -13,15 +13,15 @@ const meaningUndefined = undefined;
 const meaningNull = null;
 //Мы можем явно типизировать объект
 const typeObject = {
-    //    a: 'hello' - ошибка, в типе TypeObject ключ a - число
-    a: 1,
-    b: 2,
-    c: 'Hello',
-    d: function () {
-        console.log(this);
-    },
-    //e: () => console.log(this) //ts подскажет, что ссылаешься на глобальный объект
-    e: (object) => console.log(object),
+  //    a: 'hello' - ошибка, в типе TypeObject ключ a - число
+  a: 1,
+  b: 2,
+  c: 'Hello',
+  d: function () {
+    console.log(this);
+  },
+  //e: () => console.log(this) //ts подскажет, что ссылаешься на глобальный объект
+  e: (object) => console.log(object),
 };
 //variableVar
 console.log('variableVar', variableVar);

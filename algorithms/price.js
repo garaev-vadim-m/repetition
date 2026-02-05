@@ -7,7 +7,6 @@ export const array4 = [2, 4, 1];
  * @return {number}
  */
 
-
 export const maxProfit = function (prices) {
   let minPrice = Infinity;
   let maxProfit = 0;

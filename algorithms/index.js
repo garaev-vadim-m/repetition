@@ -1,5 +1,22 @@
+import {
+  postorderTraversal1,
+  preorderTraversal1,
+  root,
+  sortedArray1,
+  sortedArray2,
+  sortedArray3,
+  sortedArray4,
+  symmetric,
+  symmetric2,
+} from './libs/tree.js';
+import { maxDepth, inter, isSymmetric, sortedArrayToBST, preorderTraversal, postorderTraversal } from './binary.js';
+import { array1, array2, array3, array4, maxProfit } from './price.js';
+import { isPalindrome, string1, string2, string3, string4 } from './isPalindrome.js';
+import { nums1, nums2, nums3, nums4, singleNumber } from './singleNumber.js';
+import { hasCycle, head1 } from './hasCycle.js';
+import { getIntersectionNode, list1, list2 } from './getIntersectionNode.js';
+import { convertToTitle, number1, number2, number3 } from './convertToTitle.js';
 
- 
 /** Binary */
 console.log(' ');
 console.log('** / Бинарные деревья! / **');
@@ -60,7 +77,7 @@ console.log('Links - getIntersectionNode(list1, list2)', getIntersectionNode(lis
 console.log(' ');
 console.log('** / Числа Exel / **');
 console.log(' ');
- 
+
 console.log('Exel Convert - convertToTitle(columnNumber)', convertToTitle(number1));
 console.log('Exel Convert - convertToTitle(columnNumber)', convertToTitle(number2));
 console.log('Exel Convert - convertToTitle(columnNumber)', convertToTitle(number3));
