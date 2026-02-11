@@ -3,6 +3,7 @@
     "format": "prettier --write",
     "prettier-watch": "npx onchange \"**/*\" -- prettier --write --ignore-unknown {{changed}}"
   },
+  "type": "module",
   "devDependencies": {
     "prettier": "3.6.2"
   }
