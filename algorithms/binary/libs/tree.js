@@ -1,12 +1,10 @@
-class TreeNode {
+export class TreeNode {
   constructor(val, left = null, right = null) {
     this.val = val;
     this.left = left;
     this.right = right;
   }
 }
-
-export const root = new TreeNode(8, new TreeNode(5, 3, 1), null);
 
 // export default root;
 

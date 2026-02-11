@@ -22,14 +22,16 @@ console.log('result будет 1 взятое с a: ', 2 || a); // будет 2 
 console.log('result = 2 || 5: ', 2 || 5); // будет 2
 let hour = 9;
 if (hour < 10 || hour === 9) {
-  console.log('Будет первое выражение: hour < 10');
+    console.log('Будет первое выражение: hour < 10');
 }
 // ||= (ИЛИ логическое присваивание). На текущий момент не нашел как такого применения.
 let person = 'Vasya'; //Персона
 let security = 'Jora'; //Охранник
 const currentTime = 18; //Текущее время
-if (currentTime > 17) security = '';
-if ((security ||= person)) console.log('security = Vasya', security);
+if (currentTime > 17)
+    security = '';
+if ((security ||= person))
+    console.log('security = Vasya', security);
 // && (И)
 result = 'Hello';
 console.log('&&', person.length && result.length);

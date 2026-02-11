@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "NodeNext",
+    "target": "ES2022",
+    "checkJs": true
+  },
+  "include": ["*/**/*"],
+  "exclude": ["node_modules"]
+}

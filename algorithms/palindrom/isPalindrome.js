@@ -12,3 +12,15 @@ export const isPalindrome = function (s) {
   const copy = original.split('').reverse().join('');
   return original === copy;
 };
+
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+export const isPalindromeNumber = function (x) {
+  const stringX = String(x).split('').reverse().join('');
+  if (stringX === String(x)) {
+    return true;
+  }
+  return false;
+};
