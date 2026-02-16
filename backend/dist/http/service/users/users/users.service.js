@@ -5,51 +5,50 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersService = void 0;
 const common_1 = require("@nestjs/common");
+const typeorm_1 = require("@nestjs/typeorm");
+const users_entity_1 = require("../../../../database/entity/users/users.entity");
+const typeorm_2 = require("typeorm");
 let UsersService = class UsersService {
-    users = [
-        {
-            id: 1,
-            email: 'vadim@vadim.ru',
-            name: 'Vadim',
-        },
-    ];
-    nextId = 1;
-    findAll() {
-        return this.users;
+    userRepository;
+    constructor(userRepository) {
+        this.userRepository = userRepository;
     }
-    find(id) {
-        const user = this.users.find((value) => value.id === id);
+    findAll() {
+        return this.userRepository.find();
+    }
+    async find(id) {
+        const user = await this.userRepository.findOneBy({ id });
         if (!user)
             throw new common_1.NotFoundException('Пользователь не найден!');
         return user;
     }
     create(dto) {
-        const newUser = {
-            id: this.nextId++,
-            name: dto.name,
-            email: dto.email,
-        };
-        this.users.push(newUser);
-        return newUser;
+        const user = this.userRepository.create(dto);
+        return this.userRepository.create(user);
     }
-    update(id, dto) {
-        const user = this.find(id);
+    async update(id, dto) {
+        const user = await this.find(id);
         Object.assign(user, dto);
-        return user;
+        return this.userRepository.save(user);
     }
-    remove(id) {
-        const index = this.users.findIndex((value) => value.id === id);
-        if (index === -1) {
-            throw new common_1.NotFoundException('Пользователь не найден!');
-        }
-        this.users.splice(index, 1);
+    async remove(id) {
+        const user = await this.find(id);
+        return this.userRepository.remove(user);
     }
 };
 exports.UsersService = UsersService;
 exports.UsersService = UsersService = __decorate([
-    (0, common_1.Injectable)()
+    (0, common_1.Injectable)(),
+    __param(0, (0, typeorm_1.InjectRepository)(users_entity_1.User)),
+    __metadata("design:paramtypes", [typeorm_2.Repository])
 ], UsersService);
 //# sourceMappingURL=users.service.js.map

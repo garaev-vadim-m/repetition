@@ -5,9 +5,9 @@ import { UsersService } from 'src/http/service/users/users/users.service';
 export declare class UsersController {
     private readonly usersService;
     constructor(usersService: UsersService);
-    getUsers(): Users[];
-    getUser(id: number): Users;
-    setUser(dto: CreateUserDto): Users;
-    setUpdateUser(id: number, dto: UpdateUserDto): Users;
-    deleteUser(id: number): void;
+    getUsers(): Promise<Users[]>;
+    getUser(id: number): Promise<Users>;
+    setUser(dto: CreateUserDto): import("../../../../database/entity/users/users.entity").User;
+    setUpdateUser(id: number, dto: UpdateUserDto): Promise<Users>;
+    deleteUser(id: number): Promise<import("../../../../database/entity/users/users.entity").User>;
 }
