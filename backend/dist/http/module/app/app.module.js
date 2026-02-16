@@ -13,6 +13,7 @@ const app_service_1 = require("../../service/app/app.service");
 const config_1 = require("@nestjs/config");
 const users_module_1 = require("../users/users/users.module");
 const typeorm_1 = require("@nestjs/typeorm");
+const users_entity_1 = require("../../../database/entity/users/users.entity");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -28,7 +29,8 @@ exports.AppModule = AppModule = __decorate([
                 password: '',
                 database: 'nest_db',
                 synchronize: false,
-                autoLoadEntities: false,
+                logging: true,
+                entities: [users_entity_1.User],
             }),
             users_module_1.UsersModule,
         ],

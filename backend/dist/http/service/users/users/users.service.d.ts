@@ -8,7 +8,7 @@ export declare class UsersService {
     constructor(userRepository: Repository<User>);
     findAll(): Promise<Users[]>;
     find(id: number): Promise<Users>;
-    create(dto: CreateUserDto): User;
+    create(dto: CreateUserDto): Promise<User>;
     update(id: number, dto: UpdateUserDto): Promise<Users>;
     remove(id: number): Promise<User>;
 }

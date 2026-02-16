@@ -7,7 +7,7 @@ export declare class UsersController {
     constructor(usersService: UsersService);
     getUsers(): Promise<Users[]>;
     getUser(id: number): Promise<Users>;
-    setUser(dto: CreateUserDto): import("../../../../database/entity/users/users.entity").User;
+    setUser(dto: CreateUserDto): Promise<import("../../../../database/entity/users/users.entity").User>;
     setUpdateUser(id: number, dto: UpdateUserDto): Promise<Users>;
     deleteUser(id: number): Promise<import("../../../../database/entity/users/users.entity").User>;
 }

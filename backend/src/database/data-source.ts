@@ -10,9 +10,8 @@ export const AppDataSource = new DataSource({
   username: 'root',
   password: '',
   database: 'nest_db',
+  synchronize: false,
 
   entities: [User],
   migrations: ['src/database/migrations/*.ts'],
-
-  synchronize: false,
 });

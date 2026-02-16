@@ -33,7 +33,7 @@ let UsersService = class UsersService {
     }
     create(dto) {
         const user = this.userRepository.create(dto);
-        return this.userRepository.create(user);
+        return this.userRepository.save(user);
     }
     async update(id, dto) {
         const user = await this.find(id);
