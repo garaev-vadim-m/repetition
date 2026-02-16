@@ -1,3 +1,9 @@
 .idea
 /typescript/node_modules/
 node_modules
+
+*.bundle
+*.7z
+*.zip
+
+/backend/dist

@@ -1,54 +1,41 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { User } from 'src/database/entity/users/users.entity';
 import { UpdateUserDto } from 'src/http/dto/users/update-user.dto';
 import { CreateUserDto } from 'src/http/dto/users/users.dto';
 import { Users } from 'src/http/module/users/users/UsersType.type';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class UsersService {
-  private users: Users[] = [
-    {
-      id: 1,
-      email: 'vadim@vadim.ru',
-      name: 'Vadim',
-    },
-  ];
+  constructor(
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
+  ) {}
 
-  nextId = 1;
-
-  findAll(): Users[] {
-    return this.users;
+  findAll(): Promise<Users[]> {
+    return this.userRepository.find();
   }
 
-  find(id: number) {
-    const user = this.users.find((value) => value.id === id);
+  async find(id: number): Promise<Users> {
+    const user = await this.userRepository.findOneBy({ id });
     if (!user) throw new NotFoundException('Пользователь не найден!');
     return user;
   }
 
   create(dto: CreateUserDto) {
-    const newUser: Users = {
-      id: this.nextId++,
-      name: dto.name,
-      email: dto.email,
-    };
-
-    this.users.push(newUser);
-    return newUser;
+    const user = this.userRepository.create(dto);
+    return this.userRepository.save(user);
   }
 
-  update(id: number, dto: UpdateUserDto): Users {
-    const user = this.find(id);
+  async update(id: number, dto: UpdateUserDto): Promise<Users> {
+    const user = await this.find(id);
     Object.assign(user, dto);
-    return user;
+    return this.userRepository.save(user);
   }
 
-  remove(id: number) {
-    const index = this.users.findIndex((value) => value.id === id);
-
-    if (index === -1) {
-      throw new NotFoundException('Пользователь не найден!');
-    }
-
-    this.users.splice(index, 1);
+  async remove(id: number) {
+    const user = await this.find(id);
+    return this.userRepository.remove(user);
   }
 }
