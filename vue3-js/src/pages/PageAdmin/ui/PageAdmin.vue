@@ -1,6 +1,8 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { apiClient } from '@/shared/api/apiClient';
+import MainLayout from '@/widgets/layout/MainLayout.vue';
+import Button from '@/shared/ui/Button.vue';
 
 const users = ref([]);
 async function getUsers(params = {}) {
@@ -56,6 +58,12 @@ onMounted(getUsers);
 </script>
 
 <template>
+  <MainLayout>
+    <template #header>
+      <RouterLink to="/">Главная</RouterLink>
+      <Button>Выйти</Button>
+    </template>
+  </MainLayout>
   <div :class="classes.root">
     <div v-for="user of users">
       <div>
