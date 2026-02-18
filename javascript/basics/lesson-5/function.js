@@ -1,60 +1,108 @@
-let messages = ['message1', 'message2', 'message3'];
-const repeat = 50;
-//Просто функция
+// Константы и переменные
+const messages = ['message1', 'message2', 'message3'];
+const REPEAT_COUNT = 50; // Константу лучше именовать в верхнем регистре
+
+/**
+ * Простая функция без параметров
+ * Выводит разделитель и сообщение
+ */
 function showMessage() {
-  console.log('-'.repeat(repeat));
+  console.log('-'.repeat(REPEAT_COUNT));
   console.log('Hello world!');
 }
 
-//Параметр
-function thisFunction(name) {
-  console.log('-'.repeat(repeat));
-  let message = [...name];
-  console.log(message);
+/**
+ * Функция с параметром
+ * @param {string} name - имя для преобразования в массив
+ */
+function processName(name) {
+  console.log('-'.repeat(REPEAT_COUNT));
+  const messageArray = [...name]; // Более понятное имя переменной
+  console.log(messageArray);
 }
 
-//Внешняя переменная
-function messages1() {
-  console.log('-'.repeat(repeat));
+/**
+ * Функция, использующая внешнюю переменную messages
+ */
+function showFirstMessage() {
+  console.log('-'.repeat(REPEAT_COUNT));
   console.log(messages[0]);
 }
 
-//по умолчанию
-function message2(text = messages1()) {
-  console.log('-'.repeat(repeat));
-  text;
+/**
+ * Функция с параметром по умолчанию
+ * @param {Function} callback - функция, вызываемая по умолчанию
+ */
+function executeWithDefault(callback = showFirstMessage) {
+  console.log('-'.repeat(REPEAT_COUNT));
+  callback(); // Вызываем переданную функцию
 }
 
-//значение объекта
-let messag3 = {
-  functions1: function message4() {
-    console.log('-'.repeat(repeat));
-    console.log(this); // this функции становится объект messag3
+/**
+ * Объект с методами
+ */
+const messageObject = {
+  // Обычная функция (имеет свой this)
+  showContext() {
+    console.log('-'.repeat(REPEAT_COUNT));
+    console.log('this в обычной функции:', this); // this = messageObject
   },
-  function2: () => console.log(this), //undefiend - нет своего this
-  say: 'hi',
+  
+  // Стрелочная функция (не имеет своего this)
+  showArrowContext: () => {
+    console.log('-'.repeat(REPEAT_COUNT));
+    console.log('this в стрелочной функции:', this); // this = внешний контекст (global/window)
+  },
+  
+  say: 'hi'
 };
 
-//Значение переменной
-
-const messag4 = function () {
-  console.log('-'.repeat(repeat));
+/**
+ * Function expression
+ * Функция, присвоенная переменной
+ */
+const showSecondMessage = function() {
+  console.log('-'.repeat(REPEAT_COUNT));
   console.log(messages[1]);
-  return console.log(this);
+  // @ts-ignore
+  console.log('this в function expression:', this);
 };
 
-//Вызов
+/**
+ * Стрелочные функции
+ */
+const sum = (a, b) => {
+  console.log('-'.repeat(REPEAT_COUNT));
+  console.log(`Сумма ${a} + ${b} =`, a + b);
+};
+
+const showArrowThis = () => {
+  console.log('-'.repeat(REPEAT_COUNT));
+  console.log('this в стрелочной функции:', this); // нет своего this
+};
+
+// ============= ВЫЗОВ ФУНКЦИЙ =============
+
+console.log('=== Простая функция ===');
 showMessage();
-thisFunction('Name');
-messages1();
-message2();
-messag4();
-messag3.functions1();
-messag3.function2();
 
-//arrow function
-let sum = (a, b) => console.log(a + b);
-let thisFunction2 = () => console.log(this); // нет своего this
+console.log('\n=== Функция с параметром ===');
+processName('Name');
 
+console.log('\n=== Функция с внешней переменной ===');
+showFirstMessage();
+
+console.log('\n=== Функция с параметром по умолчанию ===');
+executeWithDefault(); // Вызовется showFirstMessage
+executeWithDefault(() => console.log('Кастомный колбэк'));
+
+console.log('\n=== Function expression ===');
+showSecondMessage();
+
+console.log('\n=== Методы объекта ===');
+messageObject.showContext();
+messageObject.showArrowContext();
+
+console.log('\n=== Стрелочные функции ===');
 sum(1, 4);
-thisFunction2();
+showArrowThis();
