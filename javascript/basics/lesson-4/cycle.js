@@ -121,7 +121,7 @@ console.log('\nИсходные данные:', employees);
 
 // ==================== FOREACH ====================
 console.log('\n* - forEach - *');
-employees.forEach(employee => console.log(`${employee.name}: ${employee.job}`));
+employees.forEach((employee) => console.log(`${employee.name}: ${employee.job}`));
 
 // ==================== MAP ====================
 console.log('\n* - map (трансформация данных) - *');
@@ -130,34 +130,26 @@ console.log('Только id и name:', namesAndIds);
 
 // ==================== FLATMAP ====================
 console.log('\n* - flatMap (объединение массивов) - *');
-const flatMapped = [employees, employees].flatMap(arr => [...arr, ...arr]);
+const flatMapped = [employees, employees].flatMap((arr) => [...arr, ...arr]);
 console.log(`flatMap результат: ${flatMapped.length} элементов`);
 
 // Сравнение с map + flat
-const mapThenFlat = [employees, employees]
-  .map(arr => [...arr, ...arr])
-  .flat();
+const mapThenFlat = [employees, employees].map((arr) => [...arr, ...arr]).flat();
 console.log(`map + flat результат: ${mapThenFlat.length} элементов`);
 
 // ==================== FILTER ====================
 console.log('\n* - filter (фильтрация) - *');
-const devOpsTeam = employees.filter(
-  employee => employee.job.toLowerCase() === 'devops'
-);
+const devOpsTeam = employees.filter((employee) => employee.job.toLowerCase() === 'devops');
 console.log('Только DevOps:', devOpsTeam);
 
 // ==================== FIND ====================
 console.log('\n* - find (первый подходящий) - *');
-const firstDevOps = employees.find(
-  employee => employee.job.toLowerCase() === 'devops'
-);
+const firstDevOps = employees.find((employee) => employee.job.toLowerCase() === 'devops');
 console.log('Первый DevOps:', firstDevOps);
 
 // ==================== FINDINDEX ====================
 console.log('\n* - findIndex - *');
-const devOpsIndex = employees.findIndex(
-  employee => employee.job.toLowerCase() === 'devops'
-);
+const devOpsIndex = employees.findIndex((employee) => employee.job.toLowerCase() === 'devops');
 console.log('Индекс первого DevOps:', devOpsIndex);
 
 // ==================== REDUCE ====================
@@ -182,41 +174,55 @@ const array3 = [1, 4, 5, 6, 7];
 const array4 = [10, 4, 5, 6, 7];
 
 // every: все элементы должны удовлетворять условию
-console.log('every: массивы 1 и 2 полностью совпадают?', 
-  array1.every((value, index) => value === array2[index])); // true
+console.log(
+  'every: массивы 1 и 2 полностью совпадают?',
+  array1.every((value, index) => value === array2[index]),
+); // true
 
-console.log('every: массивы 1 и 3 полностью совпадают?', 
-  array1.every((value, index) => value === array3[index])); // false
+console.log(
+  'every: массивы 1 и 3 полностью совпадают?',
+  array1.every((value, index) => value === array3[index]),
+); // false
 
 // some: хотя бы один элемент удовлетворяет условию
-console.log('some: массивы 1 и 2 имеют совпадения?', 
-  array1.some((value, index) => value === array2[index])); // true
+console.log(
+  'some: массивы 1 и 2 имеют совпадения?',
+  array1.some((value, index) => value === array2[index]),
+); // true
 
-console.log('some: массивы 1 и 3 имеют совпадения?', 
-  array1.some((value, index) => value === array3[index])); // true
+console.log(
+  'some: массивы 1 и 3 имеют совпадения?',
+  array1.some((value, index) => value === array3[index]),
+); // true
 
-console.log('some: массивы 1 и 4 имеют совпадения?', 
-  array1.some((value, index) => value === array4[index])); // false
+console.log(
+  'some: массивы 1 и 4 имеют совпадения?',
+  array1.some((value, index) => value === array4[index]),
+); // false
 
 // Практический пример: проверка зарплат
 const employees2 = [
   { name: 'John', salary: 50000 },
   { name: 'Jane', salary: 60000 },
-  { name: 'Bob', salary: 45000 }
+  { name: 'Bob', salary: 45000 },
 ];
 
-console.log('\nВсе получают больше 40000?', 
-  employees2.every(emp => emp.salary > 40000)); // true
+console.log(
+  '\nВсе получают больше 40000?',
+  employees2.every((emp) => emp.salary > 40000),
+); // true
 
-console.log('Кто-то получает больше 55000?', 
-  employees2.some(emp => emp.salary > 55000)); // true
+console.log(
+  'Кто-то получает больше 55000?',
+  employees2.some((emp) => emp.salary > 55000),
+); // true
 
 // ==================== ЦЕПОЧКА МЕТОДОВ ====================
 console.log('\n* - Цепочка методов - *');
 
 const result = employees
-  .filter(emp => emp.job === 'Develop')
-  .map(emp => ({ ...emp, bonus: 1000 }))
+  .filter((emp) => emp.job === 'Develop')
+  .map((emp) => ({ ...emp, bonus: 1000 }))
   .reduce((sum, emp) => sum + emp.bonus, 0);
 
 console.log('Сумма бонусов для разработчиков:', result);

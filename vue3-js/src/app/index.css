@@ -18,3 +18,7 @@
     url('@/shared/fonts/Inter.woff2') format('woff2'),
     url('@/shared/fonts/Inter.ttf') format('truetype');
 }
+
+body {
+  margin: 0;
+}
