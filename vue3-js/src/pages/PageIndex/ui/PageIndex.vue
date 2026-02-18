@@ -10,15 +10,20 @@ import MainLayout from '@/widgets/layout/MainLayout.vue';
       <div :class="classes.root">
         <nav :class="classes.navigation">
           <RouterLink :class="classes.navigation_link" to="/">Главная</RouterLink>
-          <RouterLink :class="classes.navigation_link" to="/">Проекты</RouterLink>
-          <RouterLink :class="classes.navigation_link" to="/">База знаний</RouterLink>
-          <RouterLink :class="classes.navigation_link" to="/">Алгоритмы</RouterLink>
+          <a :class="classes.navigation_link" target="_blank" href="https://github.com/garaev-vadim-m/repetition"
+            >(icon) GitHub проекта</a
+          >
         </nav>
-        <Button>Регистарция / Вход</Button>
+        <Button>
+          <RouterLink :class="classes.navigation_link" to="/admin">Регистарция / Вход</RouterLink>
+        </Button>
       </div>
     </template>
     <template #main>
-      <div>main</div>
+      <div>
+        <div>title</div>
+        <div>list project (link git hub)</div>
+      </div>
     </template>
   </MainLayout>
 </template>
