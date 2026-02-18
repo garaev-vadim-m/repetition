@@ -70,6 +70,8 @@ const showSecondMessage = function() {
 
 /**
  * Стрелочные функции
+ * @param {number} a
+ * @param {number} b
  */
 const sum = (a, b) => {
   console.log('-'.repeat(REPEAT_COUNT));
