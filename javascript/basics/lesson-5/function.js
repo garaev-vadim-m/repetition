@@ -47,21 +47,21 @@ const messageObject = {
     console.log('-'.repeat(REPEAT_COUNT));
     console.log('this в обычной функции:', this); // this = messageObject
   },
-  
+
   // Стрелочная функция (не имеет своего this)
   showArrowContext: () => {
     console.log('-'.repeat(REPEAT_COUNT));
     console.log('this в стрелочной функции:', this); // this = внешний контекст (global/window)
   },
-  
-  say: 'hi'
+
+  say: 'hi',
 };
 
 /**
  * Function expression
  * Функция, присвоенная переменной
  */
-const showSecondMessage = function() {
+const showSecondMessage = function () {
   console.log('-'.repeat(REPEAT_COUNT));
   console.log(messages[1]);
   // @ts-ignore
