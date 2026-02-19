@@ -80,13 +80,13 @@ obj2 = {
     arrow(); //нет своего this. В таком случае будет ссылка на функцию sayHello
   },
 
-  arrowFunc: () => console.log(this.name), //Error
+  //   arrowFunc: () => console.log(this.name), //Error нет своего this
 };
 
 obj2.func2();
 obj2.func3();
 obj2.sayHello();
-obj2.arrowFunc();
+// obj2.arrowFunc();
 
 let a1 = obj2; // ссылка на бъект
 let a2 = { ...obj2 }; // копирование объекта
@@ -95,4 +95,4 @@ a1.privert = 'privet';
 
 a2.poka = 'poka';
 
-// console.log(a1, obj2, a2, obj2);
+console.log('\n a1', a1, obj2, '\n a2', a2, obj2);
