@@ -35,7 +35,7 @@ const KEY_NAME = 'aaaaa';
 obj1 = {
   ...obj1, //Можем перезаписать объект и добавить прерыдушие свойта которые записали
   ...obj2, //Можем расширить данные объекта
-  [KEY_NAME]: 'bbbb', //можем и так ключ создать
+  [KEY_NAME]: 'bbbb', //можем и так ключ создать\
 };
 
 console.log(obj1);
@@ -50,3 +50,49 @@ function userData(name, age) {
 console.log(userData('AAAAA', 12));
 
 console.log('AAAAAAA' in obj1);
+
+obj2 = {
+  ...obj2,
+  func: function () {
+    console.log(this.name);
+  },
+};
+
+obj2.func();
+
+obj2 = {
+  ...obj2,
+  func: function () {
+    console.log(this.name);
+  },
+
+  func2() {
+    console.log(this.female);
+  },
+
+  func3() {
+    console.log('female' in this);
+    console.log('notfemale' in this);
+  },
+
+  sayHello() {
+    let arrow = () => console.log(this.name, 'стрелочная функция');
+    arrow(); //нет своего this. В таком случае будет ссылка на функцию sayHello
+  },
+
+  arrowFunc: () => console.log(this.name), //Error
+};
+
+obj2.func2();
+obj2.func3();
+obj2.sayHello();
+obj2.arrowFunc();
+
+let a1 = obj2; // ссылка на бъект
+let a2 = { ...obj2 }; // копирование объекта
+
+a1.privert = 'privet';
+
+a2.poka = 'poka';
+
+// console.log(a1, obj2, a2, obj2);
