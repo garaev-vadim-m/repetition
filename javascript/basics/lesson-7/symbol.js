@@ -45,7 +45,7 @@ const _password = Symbol('password');
 const secureUser = {
   name: 'Vadim',
   login: 'vadim123',
-  [_password]: 'qwerty' // скрытый пароль
+  [_password]: 'qwerty', // скрытый пароль
 };
 
 console.log('\n=== СКРЫТЫЕ СВОЙСТВА ===');
@@ -63,10 +63,10 @@ const iterable = {
     return {
       next: () => ({
         value: data[i],
-        done: i++ >= data.length
-      })
+        done: i++ >= data.length,
+      }),
     };
-  }
+  },
 };
 
 console.log('\n=== Symbol.iterator ===');
@@ -78,7 +78,7 @@ for (const val of iterable) {
 
 const source = {
   regular: 'обычное',
-  [idSymbol]: 'символьное'
+  [idSymbol]: 'символьное',
 };
 
 const copy = { ...source }; // поверхностное копирование

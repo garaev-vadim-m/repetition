@@ -64,7 +64,7 @@ console.log(obj1Updated);
 function createUser(name, age) {
   return {
     name, // сокращенная запись (вместо name: name)
-    age,  // сокращенная запись (вместо age: age)
+    age, // сокращенная запись (вместо age: age)
   };
 }
 
@@ -81,33 +81,33 @@ console.log('AAAAAAA' in obj1Updated); // оператор in проверяет
 // Обновляем obj2 с добавлением методов
 const obj2WithMethods = {
   ...obj2,
-  
+
   // Обычная функция как метод
-  showName: function() {
+  showName: function () {
     console.log('Имя из метода showName:', this.name);
   },
-  
+
   // Сокращенный синтаксис методов (ES6)
   showFemale() {
     console.log('female из метода showFemale:', this.female);
   },
-  
+
   // Метод с проверкой наличия свойств
   checkProperties() {
     console.log('"female" in this:', 'female' in this);
     console.log('"notfemale" in this:', 'notfemale' in this);
   },
-  
+
   // Метод со стрелочной функцией внутри
   sayHello() {
-    // Стрелочная функция не имеет своего this, 
+    // Стрелочная функция не имеет своего this,
     // поэтому берет this из внешней функции sayHello
     const arrow = () => {
       console.log('Привет от стрелочной функции:', this.name);
     };
     arrow();
   },
-  
+
   // Стрелочная функция как метод (НЕ РАБОТАЕТ КАК ОЖИДАЕТСЯ!)
   // arrowFunc: () => console.log(this.name), // this будет глобальным объектом
 };
@@ -129,7 +129,7 @@ demoObj.sayHello();
 // Создаем тестовый объект
 const originalObject = {
   name: 'Original',
-  age: 25
+  age: 25,
 };
 
 // Ссылка на объект (не копия!)
@@ -166,7 +166,7 @@ console.log('Пары ключ-значение:', Object.entries(demoObj));
 // Заморозка объекта (делает неизменяемым)
 const frozenObject = Object.freeze({
   name: 'Frozen',
-  value: 42
+  value: 42,
 });
 
 // frozenObject.name = 'New Name'; // Ошибка в strict mode, игнорируется в обычном режиме
