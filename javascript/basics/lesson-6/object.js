@@ -158,7 +158,13 @@ console.log('\n=== ДЕСКРИПТОРЫ СВОЙСТВ ===');
 const propertyDescriptor = Object.getOwnPropertyDescriptor(demoObj, 'female');
 console.log('Дескриптор свойства "female":', propertyDescriptor);
 
-// Получение всех ключей объекта
+/**
+ * Object.keys, values, entries
+ * Object.keys(obj) – возвращает массив ключей.
+ * Object.values(obj) – возвращает массив значений.
+ * Object.entries(obj) – возвращает массив пар [ключ, значение].
+ */
+
 console.log('\nКлючи объекта demoObj:', Object.keys(demoObj));
 console.log('Значения объекта demoObj:', Object.values(demoObj));
 console.log('Пары ключ-значение:', Object.entries(demoObj));
@@ -172,3 +178,31 @@ const frozenObject = Object.freeze({
 // frozenObject.name = 'New Name'; // Ошибка в strict mode, игнорируется в обычном режиме
 console.log('\nЗамороженный объект:', frozenObject);
 console.log('Объект заморожен?', Object.isFrozen(frozenObject));
+
+/**
+ * getter object
+ * setter object
+ */
+
+let objGetSet = {
+  name: 'John',
+  surname: 'Smith',
+  job: '',
+
+  /**
+   * @return {string}
+   */
+  get propName() {
+    return this.job;
+  },
+  /**
+   * @param {string} value
+   */
+  set propName(value) {
+    this.job = value;
+  },
+};
+
+objGetSet.propName = 'DevOps';
+
+console.log(objGetSet.propName);

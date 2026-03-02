@@ -108,3 +108,79 @@ messageObject.showArrowContext();
 console.log('\n=== Стрелочные функции ===');
 sum(1, 4);
 showArrowThis();
+
+//Рекурсия
+
+//Интерируемый
+/**
+ * @param {number} x
+ * @param {number} n
+ * @return {number}
+ */
+function pow1(x, n) {
+  let result = 1;
+
+  // умножаем result на x n раз в цикле
+  for (let i = 0; i < n; i++) {
+    result *= x;
+  }
+
+  return result;
+}
+
+console.log(pow1(2, 3));
+
+//Рекурсивный
+/**
+ * @param {number} x
+ * @param {number} n
+ * @return {number}
+ */
+function pow2(x, n) {
+  if (n == 1) {
+    return x;
+  } else {
+    return x * pow2(x, n - 1);
+  }
+}
+
+console.log(pow2(2, 3));
+
+// Декораторы и переадресация вызова, call/apply
+//Оставить урок на последние темы? Оставить урок на последние темы.
+
+/**
+ * @param {any} x
+ */
+function slow(x) {
+  // здесь могут быть ресурсоёмкие вычисления
+  alert(`Called with ${x}`);
+  return x;
+}
+
+/**
+ * @param {(arg0: any) => any} func
+ */
+function cachingDecorator(func) {
+  let cache = new Map();
+
+  return function (/** @type {any} */ x) {
+    if (cache.has(x)) {
+      // если кеш содержит такой x,
+      return cache.get(x); // читаем из него результат
+    }
+
+    let result = func(x); // иначе, вызываем функцию
+
+    cache.set(x, result); // и кешируем (запоминаем) результат
+    return result;
+  };
+}
+
+slow = cachingDecorator(slow);
+
+console.log(slow(1)); // slow(1) кешируем
+console.log('Again: ' + slow(1)); // возвращаем из кеша
+
+console.log(slow(2)); // slow(2) кешируем
+console.log('Again: ' + slow(2)); // возвращаем из кеша
