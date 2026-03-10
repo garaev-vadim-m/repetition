@@ -6,9 +6,15 @@ import Button from '@/shared/ui/Button.vue';
 
 const users = ref([]);
 async function getUsers(params = {}) {
-  const { data } = await apiClient.get('/users');
-
-  users.value = [...data];
+  // const { data } = await apiClient.get('/users');
+  const data = ref([
+    {
+      id: 1,
+      name: 'name',
+      email: 'email',
+    },
+  ]);
+  users.value = [...data.value];
 }
 
 const modelUser = ref({
@@ -21,30 +27,35 @@ const modelUser = ref({
  * @param {any} formData
  */
 async function setUser(formData) {
-  await apiClient.post('/users', formData);
+  // await apiClient.post('/users', formData);
+  users.value.push({
+    ...formData,
+    id: Math.random(),
+  });
   modelUser.value.name = '';
   modelUser.value.email = '';
-  getUsers();
+  // getUsers();
 }
 
 /**
  * @param {{ id: any; }} user
  */
 async function deleteUser(user) {
-  console.log(user);
-  await apiClient.delete(`/users/${user.id}`);
-  getUsers();
+  users.value = users.value.filter(({ id }) => id !== user.id);
 }
 
-async function setUpdateUser() {
-  const { id, name, email } = modelUser.value;
+async function setUpdateUser(user) {
+  const { id } = modelUser.value;
 
-  await apiClient.patch(`/users/${id}`, { name, email });
-
+  // await apiClient.patch(`/users/${id}`, { name, email });
+  const userIndex = users.value.findIndex(({ id }) => id === user.id);
+  users.value[userIndex] = {
+    id,
+    name: modelUser.value.name,
+    email: modelUser.value.email,
+  };
   modelUser.value.name = '';
   modelUser.value.email = '';
-
-  await getUsers();
 }
 
 /**
