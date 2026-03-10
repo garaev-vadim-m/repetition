@@ -1,8 +1,15 @@
-<script setup></script>
+<script setup>
+import MainLayout from '@/widgets/layout/MainLayout.vue';
+</script>
 <template>
-  <div :class="classes.root">
-    <p>BaseComponent</p>
-  </div>
+  <MainLayout>
+    <template #header>
+      <a href="/">asd</a>
+    </template>
+    <div :class="classes.root">
+      <p>BaseComponent</p>
+    </div>
+  </MainLayout>
 </template>
 <style module="classes" lang="scss">
 .root {

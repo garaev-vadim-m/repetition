@@ -1,10 +1,7 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
-  <main>
-    <RouterView />
-  </main>
+  <RouterView />
 </template>
 
 <style module="classes">

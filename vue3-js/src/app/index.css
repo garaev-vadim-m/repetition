@@ -9,6 +9,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  mix-blend-mode: screen;
 }
 
 @font-face {
@@ -19,6 +20,18 @@
     url('@/shared/fonts/Inter.ttf') format('truetype');
 }
 
-body {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
   margin: 0;
+  padding: 0;
+}
+
+ul {
+  padding: 0 16px;
 }
