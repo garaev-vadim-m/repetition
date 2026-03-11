@@ -1,0 +1,75 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "vue/setup-compiler-macros": true
+    // https://eslint.vuejs.org/user-guide/#compiler-macros-such-as-defineprops-and-defineemits-generate-no-undef-warnings
+  },
+  "extends": [
+    "plugin:vue/vue3-essential",
+    "eslint:recommended",
+    "@vue/eslint-config-typescript",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "rules": {
+    "no-console": "error",
+    "jest/expect-expect": "off",
+    "no-debugger": "warn",
+    "no-empty": [
+      "error",
+      {
+        "allowEmptyCatch": true
+      }
+    ],
+    "prefer-const": "error",
+    "no-var": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "args": "after-used"
+      }
+    ],
+    // https://eslint.org/docs/rules/no-unused-vars#args
+    "@typescript-eslint/no-empty-function": "error",
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      {
+        "fixStyle": "inline-type-imports"
+      }
+    ],
+    "vue/multi-word-component-names": "off",
+    "vue/no-unused-components": "error",
+    "vue/no-unused-vars": "error",
+    "vue/no-reserved-component-names": "off",
+    "vue/component-tags-order": [
+      "error",
+      {
+        "order": [
+          "script",
+          "template",
+          "style"
+        ]
+      }
+    ],
+    "vue/component-name-in-template-casing": [
+      "error",
+      "PascalCase",
+      {
+        "registeredComponentsOnly": false,
+        "ignores": [
+          "component"
+        ]
+      }
+    ],
+    // https://eslint.vuejs.org/rules/component-name-in-template-casing.html
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  }
+}

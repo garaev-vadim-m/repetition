@@ -1,4 +1,4 @@
-<script setup></script>
+<script setup lang="ts"></script>
 
 <template>
   <header :class="classes.root_header">
@@ -11,7 +11,7 @@
 
 <style module="classes" lang="scss">
 .root_header {
-  height: 36px;
+  height: 53px;
   padding: 8px 16px;
   border-bottom: 1px solid #ffffff5e;
   display: flex;

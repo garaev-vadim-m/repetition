@@ -1,15 +1,43 @@
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { apiClient } from '@/shared/api/apiClient';
-import MainLayout from '@/widgets/layout/MainLayout.vue';
 import Button from '@/shared/ui/Button.vue';
+import MainLayout from '@/widgets/layout/MainLayout.vue';
 
-const users = ref([]);
+type User = {
+  id: number;
+  name: string;
+  email: string;
+};
+const users = ref<User[]>([]);
 async function getUsers(params = {}) {
-  // const { data } = await apiClient.get('/users');
   const data = ref([
     {
       id: 1,
+      name: 'name',
+      email: 'email',
+    },
+    {
+      id: 2,
+      name: 'name',
+      email: 'email',
+    },
+    {
+      id: 3,
+      name: 'name',
+      email: 'email',
+    },
+    {
+      id: 4,
+      name: 'name',
+      email: 'email',
+    },
+    {
+      id: 5,
+      name: 'name',
+      email: 'email',
+    },
+    {
+      id: 6,
       name: 'name',
       email: 'email',
     },
@@ -23,10 +51,7 @@ const modelUser = ref({
   email: '',
 });
 
-/**
- * @param {any} formData
- */
-async function setUser(formData) {
+async function setUser(formData: Pick<User, 'name' | 'email'>) {
   // await apiClient.post('/users', formData);
   users.value.push({
     ...formData,
@@ -37,14 +62,11 @@ async function setUser(formData) {
   // getUsers();
 }
 
-/**
- * @param {{ id: any; }} user
- */
-async function deleteUser(user) {
+async function deleteUser(user: User) {
   users.value = users.value.filter(({ id }) => id !== user.id);
 }
 
-async function setUpdateUser(user) {
+async function setUpdateUser(user: User) {
   const { id } = modelUser.value;
 
   // await apiClient.patch(`/users/${id}`, { name, email });
@@ -58,10 +80,7 @@ async function setUpdateUser(user) {
   modelUser.value.email = '';
 }
 
-/**
- * @param {{ id: number; name: string; email: string; } | { id: number; name: string; email: string; }} user
- */
-function changeUser(user) {
+function changeUser(user: User) {
   modelUser.value = { ...user };
 }
 
